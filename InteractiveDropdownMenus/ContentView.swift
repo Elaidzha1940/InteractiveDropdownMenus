@@ -39,6 +39,11 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .onTapGesture {
+            withAnimation(.interactiveSpring(response: 0.8, dampingFraction: 0.6)) {
+                idDropdownOpen.toggle()
+            }
+        }
     }
 }
 
