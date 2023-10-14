@@ -31,7 +31,7 @@ struct ContentView: View {
                         .font(.system(size: 18, weight: .bold, design: .rounded))
                 }
                 .padding(.horizontal)
-                .frame(width: 300, height: 70)
+                .frame(width: idDropdownOpen ? 300 : 300 - CGFloat((items.count - 1 - items.firstIndex(where: {$0.id == item.id})!) * 10), height: 70)
                 .background(Color.gray)
                 .cornerRadius(20)
                 .offset(y: idDropdownOpen ? 0 : CGFloat(-70 * items.firstIndex(where: { $0.id == item.id })!))
