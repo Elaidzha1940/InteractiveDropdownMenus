@@ -10,6 +10,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var idDropdownOpen = false
+    
     var body: some View {
         
         VStack {
@@ -31,7 +33,9 @@ struct ContentView: View {
                 .padding(.horizontal)
                 .frame(width: 300, height: 70)
                 .background(Color.gray)
-            .cornerRadius(20)
+                .cornerRadius(20)
+                .offset(y: idDropdownOpen ? 0 : CGFloat(-70 * items.firstIndex(where: { $0.id == item.id })!))
+                .shadow(color: .white, radius: 1, x: 0, y: -3)
             }
         }
         .preferredColorScheme(.dark)
@@ -50,7 +54,7 @@ struct DataItem: Identifiable {
 }
 
 let items: [DataItem] = [
-
+    
     DataItem(icon: "play.fill", title: "Play"),
     DataItem(icon: "pause.circle.fill", title: "Pause"),
     DataItem(icon: "repeat.circle.fill", title: "Repeat"),
